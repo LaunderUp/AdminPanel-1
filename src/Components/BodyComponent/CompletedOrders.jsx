@@ -44,7 +44,7 @@ export default function CompletedOrders() {
   }, []);
   return (
     <Box mt={2}>
-      <PageHeader label="Orders" title="Completed Orders" />
+      <PageHeader label="Orders" title="Placed Orders" />
       <Grid container spacing={1}>
         {Posts.length <= 0 && Array.isArray(Posts) && isLoading ? (
           <Typography component="p" align="center" style={{ width: "100%" }}>
