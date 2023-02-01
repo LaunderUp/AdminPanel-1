@@ -76,11 +76,11 @@ export default function Dashboard() {
       value: `${Posts.length}`,
     },
     {
-      label: "Completed",
+      label: "Placed",
       value: `${PostsComp.length}`,
     },
     {
-      label: "Total Shops",
+      label: "Cancelled",
       value: `${shop.length}`,
     },
     {
