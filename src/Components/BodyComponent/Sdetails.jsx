@@ -183,7 +183,7 @@ const Sdetails = () => {
         `http://107.21.130.185:80/api/fetchShopDocs/${recData.sid}`
       );
       const result = await res.json();
-      while (result.length === 0) {}
+      while (result.length === 0) { }
       if (result.length > 0) {
         setIsLoading(false);
       }
@@ -198,7 +198,7 @@ const Sdetails = () => {
         `http://107.21.130.185:80/api/getOwnerDetails/${recData.sid}`
       );
       const result = await res.json();
-      while (result.length === 0) {}
+      while (result.length === 0) { }
       setShopOwnerData(result);
     };
 
@@ -302,272 +302,273 @@ const Sdetails = () => {
         <>
           {Array.isArray(shopData)
             ? shopData.map((shopobj) => {
-                return (
-                  <>
-                    <Avatar alt={`Avatar`} src={`${recData.simg}`} />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`SHOP NAME => ${recData.sname}`}
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`SHOP ADDRESS => ${recData.saddr}`}
-                      fullWidth
-                      multiline
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`SHOP MOBILE NUMBER => ${recData.smob}`}
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`OPERATINAL HOURS => ${recData.shour}`}
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={
-                        recData.isexp === 0
-                          ? `EXPRESS STATUS => Not Express`
-                          : `EXPRESS STATUS => Express Shop`
-                      }
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`OPERATIONAL DAYS => ${recData.sdays}`}
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`GST NUMBER => ${shopobj.gst_number}`}
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`PAN => ${shopobj.pan_number}`}
-                      fullWidth
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`LEGAL ENTITY NAME & ADDRESS => ${shopobj.entity_name}, ${shopobj.address_legal_entity}`}
-                      fullWidth
-                      multiline
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`SHOP LICENSE NUMBER => ${shopobj.shop_license_number}`}
-                      fullWidth
-                      multiline
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
-                    />
-                    <TextField
-                      id="standard-read-only-input"
-                      defaultValue={`VERIFICATION STATUS => ${
-                        shopobj.verified_at
-                          ? shopobj.verified_at
-                          : `Not Verified`
+              return (
+                <>
+                  <Avatar alt={`Avatar`} src={`${recData.simg}`} />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`SHOP NAME => ${recData.sname}`}
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`SHOP ADDRESS => ${recData.saddr}`}
+                    fullWidth
+                    multiline
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`SHOP MOBILE NUMBER => ${recData.smob}`}
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`OPERATINAL HOURS => ${recData.shour}`}
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={
+                      recData.isexp === 0
+                        ? `EXPRESS STATUS => Not Express`
+                        : `EXPRESS STATUS => Express Shop`
+                    }
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`OPERATIONAL DAYS => ${recData.sdays}`}
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`GST NUMBER => ${shopobj.gst_number}`}
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`PAN => ${shopobj.pan_number}`}
+                    fullWidth
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`LEGAL ENTITY NAME & ADDRESS => ${shopobj.entity_name}, ${shopobj.address_legal_entity}`}
+                    fullWidth
+                    multiline
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`SHOP LICENSE NUMBER => ${shopobj.shop_license_number}`}
+                    fullWidth
+                    multiline
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  <TextField
+                    id="standard-read-only-input"
+                    defaultValue={`VERIFICATION STATUS => ${shopobj.verified_at
+                      ? shopobj.verified_at
+                      : `Not Verified`
                       }`}
-                      fullWidth
-                      multiline
-                      variant="standard"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                      style={{ margin: "20px" }}
+                    fullWidth
+                    multiline
+                    variant="standard"
+                    InputProps={{
+                      readOnly: true,
+                    }}
+                    style={{ margin: "20px" }}
+                  />
+                  {console.log(shopobj.shop_license_image_url)}
+                  <Button style={{ margin: "20px" }} onClick={handleOpen}>
+                    <b>CLICK TO VIEW PAN CARD</b>
+                  </Button>
+                  <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <img
+                      style={{ width: "50%", height: "90%" }}
+                      src={`${shopobj.pan_image_url}`}
+                      alt="image"
                     />
-                    <Button style={{ margin: "20px" }} onClick={handleOpen}>
-                      <b>CLICK TO VIEW PAN CARD</b>
-                    </Button>
-                    <Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <img
-                        style={{ width: "50%", height: "90%" }}
-                        src={`${shopobj.pan_image_url}`}
-                        alt="image"
-                      />
-                      {/* <Button onClick={handleClose}>CLOSE</Button> */}
-                    </Modal>
+                    {/* <Button onClick={handleClose}>CLOSE</Button> */}
+                  </Modal>
 
-                    <Button style={{ margin: "20px" }} onClick={handleOpen2}>
-                      <b>CLICK TO VIEW SHOP LICENSE</b>
-                    </Button>
-                    <Modal
-                      open={open2}
-                      onClose={handleClose2}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <img
-                        style={{ width: "50%", height: "90%" }}
-                        src={`${shopobj.shop_license_image_url}`}
-                        alt="image"
-                      />
-                      {/* <Button onClick={handleClose}>CLOSE</Button> */}
-                    </Modal>
-                    <br></br>
-                    {shopOwnerData.map((sownerObj) => {
-                      return (
-                        <>
-                          <Button
-                            variant="contained"
-                            endIcon={<AccountBalanceIcon />}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              if (shopOrder !== 0 && shopOrder > payments) {
-                                settlePayments(sownerObj, shopobj);
-                                // setIsPaid(true);
-                                handleClick(e);
-                                //close(e);
-                              } else {
-                                alert("No transaction to process");
-                                //close(e);
-                              }
-                            }}
-                            style={{ margin: "20px" }}
-                          >
-                            Settle Payments
-                          </Button>
-                          <Popover
-                            id={id}
-                            open={openpop}
-                            anchorEl={anchorEl}
-                            onClose={handlePopClose}
-                            anchorOrigin={{
-                              vertical: "bottom",
-                              horizontal: "left",
-                            }}
-                          >
-                            <Typography sx={{ p: 2 }}>
-                              {`Your Transaction is being processed.
+                  <Button style={{ margin: "20px" }} onClick={handleOpen2}>
+                    <b>CLICK TO VIEW SHOP LICENSE</b>
+                  </Button>
+                  <Modal
+                    open={open2}
+                    onClose={handleClose2}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <img
+                      style={{ width: "50%", height: "90%" }}
+                      src={`${shopobj.shop_license_image_url}`}
+                      // src=""
+                      alt="image"
+                    />
+                    {/* <Button onClick={handleClose}>CLOSE</Button> */}
+                  </Modal>
+                  <br></br>
+                  {shopOwnerData.map((sownerObj) => {
+                    return (
+                      <>
+                        <Button
+                          variant="contained"
+                          endIcon={<AccountBalanceIcon />}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (shopOrder !== 0 && shopOrder > payments) {
+                              settlePayments(sownerObj, shopobj);
+                              // setIsPaid(true);
+                              handleClick(e);
+                              //close(e);
+                            } else {
+                              alert("No transaction to process");
+                              //close(e);
+                            }
+                          }}
+                          style={{ margin: "20px" }}
+                        >
+                          Settle Payments
+                        </Button>
+                        <Popover
+                          id={id}
+                          open={openpop}
+                          anchorEl={anchorEl}
+                          onClose={handlePopClose}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left",
+                          }}
+                        >
+                          <Typography sx={{ p: 2 }}>
+                            {`Your Transaction is being processed.
                               Transaction ID: ${payoutData.id}
                               DO NOT REFRESH THE PAGE OR CLOSE THE WINDOW UNTIL TRANSACTION IS PROCESSED
                               Click on VIEW STATUS to check the latest status`}
-                            </Typography>
-                          </Popover>
+                          </Typography>
+                        </Popover>
 
-                          <Button
-                            variant="contained"
-                            endIcon={<ReceiptIcon />}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              getPaymentStatus();
-                              handleClickOpenDialog(e);
-                            }}
-                            style={{ margin: "20px" }}
-                          >
-                            View Payment Status
-                          </Button>
-                          <Dialog
-                            fullScreen={fullScreen}
-                            open={openDialog}
-                            onClose={handleCloseDialog}
-                            aria-labelledby="responsive-dialog-title"
-                          >
-                            <DialogTitle id="responsive-dialog-title">
-                              {"LAST TRANSACTION DETAILS"}
-                            </DialogTitle>
-                            <DialogContent>
-                              <DialogContentText>
-                                {`TRANSACTION STATUS: ${utr.status}`}
-                                <br></br>
-                                {`RAZORPAY PAYOUT ID: ${utr.id}`}
-                                <br></br>
-                                {`UNIQUE TRANSACTION NUMBER: ${utr.utr}`}
-                                <br></br>
-                                {`TRANSACTION AMOUNT: Rs.${utr.amount / 100.0}`}
-                              </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                              <Button onClick={handleCloseDialog} autoFocus>
-                                OKAY
-                              </Button>
-                            </DialogActions>
-                          </Dialog>
-                        </>
-                      );
-                    })}
-                    {!shopobj.verified_at && !isVerified ? (
-                      <Button
-                        variant="contained"
-                        endIcon={<VerifiedIcon />}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          verifyShop();
-                          // verifyShopCred();
-                        }}
-                        style={{ margin: "20px" }}
-                      >
-                        VERIFY SHOP
-                      </Button>
-                    ) : (
-                      <Button
-                        disabled
-                        variant="contained"
-                        endIcon={<VerifiedIcon />}
-                        style={{ margin: "20px" }}
-                      >
-                        ALREADY VERIFIED
-                      </Button>
-                    )}
-                  </>
-                );
-              })
+                        <Button
+                          variant="contained"
+                          endIcon={<ReceiptIcon />}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            getPaymentStatus();
+                            handleClickOpenDialog(e);
+                          }}
+                          style={{ margin: "20px" }}
+                        >
+                          View Payment Status
+                        </Button>
+                        <Dialog
+                          fullScreen={fullScreen}
+                          open={openDialog}
+                          onClose={handleCloseDialog}
+                          aria-labelledby="responsive-dialog-title"
+                        >
+                          <DialogTitle id="responsive-dialog-title">
+                            {"LAST TRANSACTION DETAILS"}
+                          </DialogTitle>
+                          <DialogContent>
+                            <DialogContentText>
+                              {`TRANSACTION STATUS: ${utr.status}`}
+                              <br></br>
+                              {`RAZORPAY PAYOUT ID: ${utr.id}`}
+                              <br></br>
+                              {`UNIQUE TRANSACTION NUMBER: ${utr.utr}`}
+                              <br></br>
+                              {`TRANSACTION AMOUNT: Rs.${utr.amount / 100.0}`}
+                            </DialogContentText>
+                          </DialogContent>
+                          <DialogActions>
+                            <Button onClick={handleCloseDialog} autoFocus>
+                              OKAY
+                            </Button>
+                          </DialogActions>
+                        </Dialog>
+                      </>
+                    );
+                  })}
+                  {!shopobj.verified_at && !isVerified ? (
+                    <Button
+                      variant="contained"
+                      endIcon={<VerifiedIcon />}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        verifyShop();
+                        // verifyShopCred();
+                      }}
+                      style={{ margin: "20px" }}
+                    >
+                      VERIFY SHOP
+                    </Button>
+                  ) : (
+                    <Button
+                      disabled
+                      variant="contained"
+                      endIcon={<VerifiedIcon />}
+                      style={{ margin: "20px" }}
+                    >
+                      ALREADY VERIFIED
+                    </Button>
+                  )}
+                </>
+              );
+            })
             : null}
         </>
       ) : (
