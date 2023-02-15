@@ -436,7 +436,7 @@ const Sdetails = () => {
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                     >
-                      <image
+                      <img
                         style={{ width: "50%", height: "90%" }}
                         src={`${shopobj.pan_image_url}`}
                         alt="image"
@@ -453,7 +453,7 @@ const Sdetails = () => {
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                     >
-                      <image
+                      <img
                         style={{ width: "50%", height: "90%" }}
                         src={`${shopobj.shop_license_image_url}`}
                         alt="image"
