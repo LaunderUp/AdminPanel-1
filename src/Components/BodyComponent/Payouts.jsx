@@ -29,7 +29,7 @@ const Payouts = () => {
 
   useEffect(() => {
     const getShops = async () => {
-      const res = await fetch("http://107.21.130.185:80/api/fetchShops");
+      const res = await fetch("http://100.25.104.108:80/api/fetchShops");
       const result = await res.json();
       if (result.length > 0) setIsShopLoading(false);
       //console.log(result.data[0]);
@@ -37,7 +37,7 @@ const Payouts = () => {
       // console.log(shop[1].shid);
     };
     const getData = async () => {
-      const res = await fetch("http://107.21.130.185:80/api/fetchPayments");
+      const res = await fetch("http://100.25.104.108:80/api/fetchPayments");
       const result = await res.json();
       if (result.length > 0) setIsLoading(false);
 
@@ -82,35 +82,35 @@ const Payouts = () => {
             </TableHead>
             {Array.isArray(payments)
               ? payments.map((pobj) => {
-                  return (
-                    <TableBody>
-                      <TableRow
-                        key={pobj?.shid}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 1 },
-                        }}
-                        hover
-                      >
-                        <TableCell align="left">
-                          {Array.isArray(shop)
-                            ? shop.map((sobj) => {
-                                return sobj.shid === pobj.shid
-                                  ? sobj.shop_name
-                                  : null;
-                              })
-                            : null}
-                        </TableCell>
-                        <TableCell align="left">{pobj?.razorpay_utr}</TableCell>
-                        <TableCell align="left">
-                          {pobj?.razorpay_payout_id}
-                        </TableCell>
-                        <TableCell align="left">{pobj?.total_amount}</TableCell>
-                        <TableCell align="left">{pobj?.status}</TableCell>
-                        <TableCell align="left">{pobj?.created_at}</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  );
-                })
+                return (
+                  <TableBody>
+                    <TableRow
+                      key={pobj?.shid}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 1 },
+                      }}
+                      hover
+                    >
+                      <TableCell align="left">
+                        {Array.isArray(shop)
+                          ? shop.map((sobj) => {
+                            return sobj.shid === pobj.shid
+                              ? sobj.shop_name
+                              : null;
+                          })
+                          : null}
+                      </TableCell>
+                      <TableCell align="left">{pobj?.razorpay_utr}</TableCell>
+                      <TableCell align="left">
+                        {pobj?.razorpay_payout_id}
+                      </TableCell>
+                      <TableCell align="left">{pobj?.total_amount}</TableCell>
+                      <TableCell align="left">{pobj?.status}</TableCell>
+                      <TableCell align="left">{pobj?.created_at}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                );
+              })
               : null}
           </Table>
         </TableContainer>

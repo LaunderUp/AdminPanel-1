@@ -20,7 +20,7 @@ export default function CompletedOrders() {
   const [shop, setShop] = React.useState([]);
 
   const getData = async () => {
-    const res = await fetch("http://107.21.130.185:80/api/fetchShops");
+    const res = await fetch("http://100.25.104.108:80/api/fetchShops");
     const result = await res.json();
     if (result.length > 0) setIsLoading(false);
     setShop(result);
@@ -28,7 +28,7 @@ export default function CompletedOrders() {
 
   const getOrders = async () => {
     const res = await fetch(
-      `http://107.21.130.185:80/api/orderFetchListCompleted`
+      `http://100.25.104.108:80/api/orderFetchListCompleted`
     );
     const result = await res.json();
     if (result.length > 0) {
@@ -65,22 +65,20 @@ export default function CompletedOrders() {
               >
                 <Card>
                   <CardHeader
-                    title={`${
-                      item.service_type.charAt(0).toUpperCase() +
+                    title={`${item.service_type.charAt(0).toUpperCase() +
                       item.service_type.slice(1)
-                    }`}
+                      }`}
                   />
                   <CardContent>
                     <Typography variant="body2" component="p">
-                      {`SHOP NAME => ${
-                        Array.isArray(shop)
+                      {`SHOP NAME => ${Array.isArray(shop)
                           ? shop.map((shopObj) => {
-                              if (shopObj.shid === item.shid)
-                                return shopObj.shop_name;
-                              else return null;
-                            })
+                            if (shopObj.shid === item.shid)
+                              return shopObj.shop_name;
+                            else return null;
+                          })
                           : null
-                      }`}
+                        }`}
                     </Typography>
                     <Typography variant="body2" component="p">
                       {`PICKUP DATE => ${item.pickup_dt}`}
@@ -103,15 +101,14 @@ export default function CompletedOrders() {
                       startIcon={<CallIcon color="secondary" />}
                       size="small"
                       color="secondary"
-                      href={`tel:${
-                        Array.isArray(shop)
+                      href={`tel:${Array.isArray(shop)
                           ? shop.map((shopObj) => {
-                              if (shopObj.shid === item.shid)
-                                return shopObj.shop_phone_no;
-                              else return null;
-                            })
+                            if (shopObj.shid === item.shid)
+                              return shopObj.shop_phone_no;
+                            else return null;
+                          })
                           : null
-                      }`}
+                        }`}
                     >
                       {`CONTACT SHOP`}
                     </Button>

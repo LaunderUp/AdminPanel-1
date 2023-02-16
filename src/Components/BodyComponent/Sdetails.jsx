@@ -87,7 +87,7 @@ const Sdetails = () => {
   const verifyShop = () => {
     // let a = 0,
     //   b = 0;
-    fetch(`http://107.21.130.185:80/api/updateVerification`, {
+    fetch(`http://100.25.104.108:80/api/updateVerification`, {
       method: "POST",
       body: JSON.stringify({
         shid: `${recData.sid}`,
@@ -108,7 +108,7 @@ const Sdetails = () => {
         console.log(err.message);
       });
 
-    fetch(`http://107.21.130.185:80/api/updateVerificationCred`, {
+    fetch(`http://100.25.104.108:80/api/updateVerificationCred`, {
       method: "POST",
       body: JSON.stringify({
         shid: `${recData.sid}`,
@@ -134,7 +134,7 @@ const Sdetails = () => {
   };
 
   const settlePayments = (sownerObj, shopobj) => {
-    fetch(`http://107.21.130.185:80/api/makePayout`, {
+    fetch(`http://100.25.104.108:80/api/makePayout`, {
       method: "POST",
       body: JSON.stringify({
         name: `${sownerObj.owner_name}`,
@@ -162,7 +162,7 @@ const Sdetails = () => {
   };
 
   const getPaymentStatus = () => {
-    fetch(`http://107.21.130.185:80/api/fetchUtr/${payoutData.id}`)
+    fetch(`http://100.25.104.108:80/api/fetchUtr/${payoutData.id}`)
       .then((response) => response.json())
       .then((data) => {
         //console.log(shopobj.ifsc_code);
@@ -180,7 +180,7 @@ const Sdetails = () => {
   React.useEffect(() => {
     const shopDocsFetch = async () => {
       const res = await fetch(
-        `http://107.21.130.185:80/api/fetchShopDocs/${recData.sid}`
+        `http://100.25.104.108:80/api/fetchShopDocs/${recData.sid}`
       );
       const result = await res.json();
       while (result.length === 0) { }
@@ -195,7 +195,7 @@ const Sdetails = () => {
   React.useEffect(() => {
     const shopOwnerFetch = async () => {
       const res = await fetch(
-        `http://107.21.130.185:80/api/getOwnerDetails/${recData.sid}`
+        `http://100.25.104.108:80/api/getOwnerDetails/${recData.sid}`
       );
       const result = await res.json();
       while (result.length === 0) { }
@@ -204,7 +204,7 @@ const Sdetails = () => {
 
     const shopOrderFetch = async () => {
       const res = await fetch(
-        `http://107.21.130.185:80/api/orderFetchListProcessed/${recData.sid}`
+        `http://100.25.104.108:80/api/orderFetchListProcessed/${recData.sid}`
       );
       const result = await res.json();
       setShopOrder(result);
@@ -213,7 +213,7 @@ const Sdetails = () => {
 
     const getPayments = async () => {
       const res = await fetch(
-        `http://107.21.130.185:80/api/fetchPayments/${recData.sid}`
+        `http://100.25.104.108:80/api/fetchPayments/${recData.sid}`
       );
       const result = await res.json();
       //console.log(result.data[0]);
@@ -229,7 +229,7 @@ const Sdetails = () => {
 
   React.useEffect(() => {
     const createInstance = () => {
-      fetch(`http://107.21.130.185:80/api/createPayout`, {
+      fetch(`http://100.25.104.108:80/api/createPayout`, {
         method: "POST",
         body: JSON.stringify({
           shid: `${recData.sid}`,
@@ -257,7 +257,7 @@ const Sdetails = () => {
 
   React.useEffect(() => {
     const updateInstance = () => {
-      fetch(`http://107.21.130.185:80/api/updatePayout`, {
+      fetch(`http://100.25.104.108:80/api/updatePayout`, {
         method: "POST",
         body: JSON.stringify({
           shid: `${recData.sid}`,

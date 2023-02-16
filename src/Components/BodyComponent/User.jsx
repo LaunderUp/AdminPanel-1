@@ -30,7 +30,7 @@ export default function CheckboxListSecondary() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const getData = async () => {
-    const res = await fetch("http://107.21.130.185:80/api/userFetch");
+    const res = await fetch("http://100.25.104.108:80/api/userFetch");
     const result = await res.json();
     if (result.length !== 0) setIsLoading(false);
     //console.log(result.data[0]);
@@ -68,25 +68,25 @@ export default function CheckboxListSecondary() {
 
             {Array.isArray(user)
               ? user.map((obj) => {
-                  return (
-                    <TableBody>
-                      <TableRow
-                        key={obj?.uid}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 1 },
-                        }}
-                      >
-                        {/* <TableCell component="th" scope="row">
+                return (
+                  <TableBody>
+                    <TableRow
+                      key={obj?.uid}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 1 },
+                      }}
+                    >
+                      {/* <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell> */}
-                        <TableCell align="left">{obj?.name}</TableCell>
-                        <TableCell align="left">{obj?.phone}</TableCell>
-                        <TableCell align="left">{obj?.email}</TableCell>
-                        <TableCell align="left">{obj?.city}</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  );
-                })
+                      <TableCell align="left">{obj?.name}</TableCell>
+                      <TableCell align="left">{obj?.phone}</TableCell>
+                      <TableCell align="left">{obj?.email}</TableCell>
+                      <TableCell align="left">{obj?.city}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                );
+              })
               : null}
           </Table>
         </TableContainer>

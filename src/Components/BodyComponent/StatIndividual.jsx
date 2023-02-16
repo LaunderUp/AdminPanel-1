@@ -39,7 +39,7 @@ const StatIndividual = (props) => {
   React.useEffect(() => {
     const shopOrderFetch = async () => {
       const res = await fetch(
-        `http://107.21.130.185:80/api/orderFetchList/${recData.sid}`
+        `http://100.25.104.108:80/api/orderFetchList/${recData.sid}`
       );
       const result = await res.json();
       if (result.length > 0) {
@@ -104,43 +104,43 @@ const StatIndividual = (props) => {
 
                   {Array.isArray(shopOrder)
                     ? shopOrder.map((obj) => {
-                        return (
-                          <TableBody>
-                            <TableRow
-                              key={obj?.oid}
-                              sx={{
-                                "&:last-child td, &:last-child th": {
-                                  border: 1,
-                                },
-                              }}
-                            >
-                              {/* <TableCell component="th" scope="row">
+                      return (
+                        <TableBody>
+                          <TableRow
+                            key={obj?.oid}
+                            sx={{
+                              "&:last-child td, &:last-child th": {
+                                border: 1,
+                              },
+                            }}
+                          >
+                            {/* <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell> */}
-                              <TableCell align="left">
-                                {obj?.order_id}
-                              </TableCell>
-                              <TableCell align="left">
-                                {obj?.pickup_dt}
-                              </TableCell>
-                              <TableCell align="left">
-                                {obj?.delivery_dt}
-                              </TableCell>
-                              <TableCell align="left">{obj?.address}</TableCell>
-                              <TableCell align="left">
-                                {obj?.service_type}
-                              </TableCell>
-                              <TableCell align="left">
-                                {obj?.total_cost}
-                              </TableCell>
-                              <TableCell align="left">{obj?.status}</TableCell>
-                              <TableCell align="left">
-                                {obj.express === 0 ? `No` : `Yes`}
-                              </TableCell>
-                            </TableRow>
-                          </TableBody>
-                        );
-                      })
+                            <TableCell align="left">
+                              {obj?.order_id}
+                            </TableCell>
+                            <TableCell align="left">
+                              {obj?.pickup_dt}
+                            </TableCell>
+                            <TableCell align="left">
+                              {obj?.delivery_dt}
+                            </TableCell>
+                            <TableCell align="left">{obj?.address}</TableCell>
+                            <TableCell align="left">
+                              {obj?.service_type}
+                            </TableCell>
+                            <TableCell align="left">
+                              {obj?.total_cost}
+                            </TableCell>
+                            <TableCell align="left">{obj?.status}</TableCell>
+                            <TableCell align="left">
+                              {obj.express === 0 ? `No` : `Yes`}
+                            </TableCell>
+                          </TableRow>
+                        </TableBody>
+                      );
+                    })
                     : null}
                 </Table>
               </TableContainer>

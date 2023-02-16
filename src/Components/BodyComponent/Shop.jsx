@@ -28,7 +28,7 @@ export default function CheckboxListSecondary() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const getData = async () => {
-    const res = await fetch("http://107.21.130.185:80/api/fetchShops");
+    const res = await fetch("http://100.25.104.108:80/api/fetchShops");
     const result = await res.json();
     if (result.length > 0) setIsLoading(false);
     //console.log(result.data[0]);
@@ -71,53 +71,53 @@ export default function CheckboxListSecondary() {
 
             {Array.isArray(shop)
               ? shop.map((shopObj) => {
-                  return (
-                    <TableBody>
-                      <TableRow
-                        key={shopObj?.shid}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 1 },
-                        }}
-                      >
-                        {/* <TableCell component="th" scope="row">
+                return (
+                  <TableBody>
+                    <TableRow
+                      key={shopObj?.shid}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 1 },
+                      }}
+                    >
+                      {/* <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell> */}
-                        <TableCell align="left">{shopObj?.shop_name}</TableCell>
-                        <TableCell align="left">
-                          {shopObj?.shop_address}
-                        </TableCell>
-                        <TableCell align="left">
-                          {shopObj?.shop_phone_no}
-                        </TableCell>
-                        <TableCell align="left">
-                          <Link
-                            to={{
-                              pathname: "/shopdetails",
-                              state: {
-                                sid: shopObj.shid,
-                                sname: shopObj.shop_name,
-                                saddr: shopObj.shop_address,
-                                smob: shopObj.shop_phone_no,
-                                shour: shopObj.operational_hours,
-                                isexp: shopObj.express,
-                                sdays: shopObj.days_open,
-                                simg: shopObj.image_url,
-                              },
-                            }}
-                            underline="hover"
-                            style={{
-                              marginRight: "1.5rem",
-                              color: "blue",
-                            }}
-                            // state={{ from: `1234f` }}
-                          >
-                            {"More"}
-                          </Link>
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  );
-                })
+                      <TableCell align="left">{shopObj?.shop_name}</TableCell>
+                      <TableCell align="left">
+                        {shopObj?.shop_address}
+                      </TableCell>
+                      <TableCell align="left">
+                        {shopObj?.shop_phone_no}
+                      </TableCell>
+                      <TableCell align="left">
+                        <Link
+                          to={{
+                            pathname: "/shopdetails",
+                            state: {
+                              sid: shopObj.shid,
+                              sname: shopObj.shop_name,
+                              saddr: shopObj.shop_address,
+                              smob: shopObj.shop_phone_no,
+                              shour: shopObj.operational_hours,
+                              isexp: shopObj.express,
+                              sdays: shopObj.days_open,
+                              simg: shopObj.image_url,
+                            },
+                          }}
+                          underline="hover"
+                          style={{
+                            marginRight: "1.5rem",
+                            color: "blue",
+                          }}
+                        // state={{ from: `1234f` }}
+                        >
+                          {"More"}
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                );
+              })
               : null}
           </Table>
         </TableContainer>
