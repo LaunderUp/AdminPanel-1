@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -11,7 +11,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+// import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import { useTheme } from "@mui/material/styles";
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   table: {
@@ -21,10 +26,49 @@ const useStyles = makeStyles({
     },
   },
 });
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 //export default function ListSecondary(){
 const StatIndividual = (props) => {
   const [shopOrder, setShopOrder] = useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [stat, setStat] = React.useState([]);
+  const [value, setValue] = React.useState("year");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    console.log(newValue)
+  };
   //const [isLoadingowner, setIsLoadingowner] = React.useState(true);
   const theme = useTheme();
   const location = useLocation();
@@ -50,6 +94,32 @@ const StatIndividual = (props) => {
     };
     shopOrderFetch();
   }, []);
+  const getStat = async (prop) => {
+    if (value === 0) {
+      const res = await fetch(`http://100.25.104.108:80/api/stats/${recData.sid}/year`);
+      const result = await res.json();
+      console.log(result);
+      setStat(result);
+    }
+    else if (value === 1) {
+      const res = await fetch(`http://100.25.104.108:80/api/stats/${recData.sid}/month`);
+      const result = await res.json();
+      console.log(result);
+      setStat(result);
+    }
+    else if (value === 2) {
+      const res = await fetch(`http://100.25.104.108:80/api/stats/${recData.sid}/week`);
+      const result = await res.json();
+      console.log(result);
+      setStat(result);
+    }
+
+
+  }
+
+  useEffect(() => {
+    getStat();
+  }, [value])
   //console.log(recData.sid);
   //console.log(recData.sname);
   //console.log(recData.saddr);
@@ -81,6 +151,31 @@ const StatIndividual = (props) => {
                 style={{ margin: "20px" }}
               />
               <br></br>
+              <h3>SALES INFORMATION</h3>
+              <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tab label="Yearly Sales" {...a11yProps(5)} />
+                    <Tab label="Monthly Sales (last 30 days)" {...a11yProps(1)} />
+                    <Tab label="Weekly sales (last 7 days)" {...a11yProps(2)} />
+                  </Tabs>
+                </Box>
+                <TabPanel value={value} index={0}>
+                  Total Orders: {stat.order}<br></br>
+                  Total Earnings: {stat.earning}
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                  Total Orders: {stat.order}<br></br>
+                  Total Earnings: {stat.earning}
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                  Total Orders: {stat.order}<br></br>
+                  Total Earnings: {stat.earning}
+                </TabPanel>
+              </Box>
+              <br></br>
+
+
               <TableContainer component={Paper}>
                 <Table
                   size="small"

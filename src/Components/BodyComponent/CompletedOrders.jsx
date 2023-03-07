@@ -72,17 +72,15 @@ export default function CompletedOrders() {
                   <CardContent>
                     <Typography variant="body2" component="p">
                       {`SHOP NAME => ${Array.isArray(shop)
-                          ? shop.map((shopObj) => {
-                            if (shopObj.shid === item.shid)
-                              return shopObj.shop_name;
-                            else return null;
-                          })
-                          : null
+                        ? shop.map((shopObj) => {
+                          if (shopObj.shid === item.shid)
+                            return shopObj.shop_name;
+                          else return null;
+                        })
+                        : null
                         }`}
                     </Typography>
-                    <Typography variant="body2" component="p">
-                      {`PICKUP DATE => ${item.pickup_dt}`}
-                    </Typography>
+                    <Typography variant="body2" component="h4"><b>PICKUP DATE  </b>{` ${item.pickup_dt}`} </Typography>
                     <Typography variant="body2" component="p">
                       {`DELIVERY DATE => ${item.delivery_dt}`}
                     </Typography>
@@ -102,12 +100,12 @@ export default function CompletedOrders() {
                       size="small"
                       color="secondary"
                       href={`tel:${Array.isArray(shop)
-                          ? shop.map((shopObj) => {
-                            if (shopObj.shid === item.shid)
-                              return shopObj.shop_phone_no;
-                            else return null;
-                          })
-                          : null
+                        ? shop.map((shopObj) => {
+                          if (shopObj.shid === item.shid)
+                            return shopObj.shop_phone_no;
+                          else return null;
+                        })
+                        : null
                         }`}
                     >
                       {`CONTACT SHOP`}

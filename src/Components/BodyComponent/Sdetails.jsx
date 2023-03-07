@@ -17,6 +17,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Modal from "@mui/material/Modal";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import { Link } from "react-router-dom";
 
 //export default function ListSecondary(){
 const Sdetails = () => {
@@ -64,6 +65,7 @@ const Sdetails = () => {
   const id = openpop ? "Transaction" : undefined;
 
   const [open2, setOpen2] = React.useState(false);
+  const [amt_to_pay, setAmtTP] = React.useState(0);
   const handleOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
   const location = useLocation();
@@ -141,7 +143,7 @@ const Sdetails = () => {
         mobno: `${sownerObj.owner_phone}`,
         accno: `${shopobj.bank_account_number}`,
         ifsc: `${shopobj.ifsc_code}`,
-        amount: `${shopOrder - payments}`,
+        amount: `${(amt_to_pay - (payments / 100.0)) * 100}`,
       }),
       headers: {
         "Content-type": "application/json",
@@ -204,7 +206,7 @@ const Sdetails = () => {
 
     const shopOrderFetch = async () => {
       const res = await fetch(
-        `http://100.25.104.108:80/api/orderFetchListProcessed/${recData.sid}`
+        `http://100.25.104.108:80/api/getInvoiceShop/${recData.sid}`
       );
       const result = await res.json();
       setShopOrder(result);
@@ -283,6 +285,12 @@ const Sdetails = () => {
     if (utr.length === 0) {
     } else updateInstance();
   }, [utr]);
+
+  React.useEffect(() => {
+    shopOrder.forEach((obj) => {
+      setAmtTP(amt_to_pay + ((obj.total_amount / 100.0) / 1.38) + ((obj.total_amount * 0.2 / 100.0) / 2.0));
+    })
+  }, shopOrder)
 
   // const styles = {
   //   position: "absolute",
@@ -461,6 +469,24 @@ const Sdetails = () => {
                     />
                     {/* <Button onClick={handleClose}>CLOSE</Button> */}
                   </Modal>
+                  <Link
+                    to={{
+                      pathname: "/shopStat",
+                      state: {
+                        sid: recData.sid,
+                        sname: recData.sname,
+                      },
+                    }}
+                    underline='none'
+                    style={{
+                      marginRight: "1.5rem",
+                      color: "blue",
+                    }}
+                    className="cross-fade"
+                  >
+                    {`Shop Stats`}
+                  </Link>
+
                   <br></br>
                   {shopOwnerData.map((sownerObj) => {
                     return (
@@ -470,7 +496,7 @@ const Sdetails = () => {
                           endIcon={<AccountBalanceIcon />}
                           onClick={(e) => {
                             e.preventDefault();
-                            if (shopOrder !== 0 && shopOrder > payments) {
+                            if (amt_to_pay !== 0 && amt_to_pay > (payments / 100.0)) {
                               settlePayments(sownerObj, shopobj);
                               // setIsPaid(true);
                               handleClick(e);
