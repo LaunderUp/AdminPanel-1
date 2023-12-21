@@ -30,7 +30,7 @@ export default function CheckboxListSecondary() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const getData = async () => {
-    const res = await fetch("http://100.25.104.108:80/api/userFetch");
+    const res = await fetch("http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/userFetch");
     const result = await res.json();
     if (result.length !== 0) setIsLoading(false);
     //console.log(result.data[0]);

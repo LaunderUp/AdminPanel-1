@@ -83,7 +83,7 @@ const StatIndividual = (props) => {
   React.useEffect(() => {
     const shopOrderFetch = async () => {
       const res = await fetch(
-        `http://100.25.104.108:80/api/orderFetchList/${recData.sid}`
+        `http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/orderFetchList/${recData.sid}`
       );
       const result = await res.json();
       if (result.length > 0) {
@@ -96,19 +96,19 @@ const StatIndividual = (props) => {
   }, []);
   const getStat = async (prop) => {
     if (value === 0) {
-      const res = await fetch(`http://100.25.104.108:80/api/stats/${recData.sid}/year`);
+      const res = await fetch(`http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/stats/${recData.sid}/year`);
       const result = await res.json();
       console.log(result);
       setStat(result);
     }
     else if (value === 1) {
-      const res = await fetch(`http://100.25.104.108:80/api/stats/${recData.sid}/month`);
+      const res = await fetch(`http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/stats/${recData.sid}/month`);
       const result = await res.json();
       console.log(result);
       setStat(result);
     }
     else if (value === 2) {
-      const res = await fetch(`http://100.25.104.108:80/api/stats/${recData.sid}/week`);
+      const res = await fetch(`http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/stats/${recData.sid}/week`);
       const result = await res.json();
       console.log(result);
       setStat(result);

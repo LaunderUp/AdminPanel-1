@@ -21,7 +21,7 @@ export default function PendingOrders() {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("http://100.25.104.108:80/api/fetchShops");
+      const res = await fetch("http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/fetchShops");
       const result = await res.json();
       if (result.length > 0) setIsLoading(false);
       //console.log(result.data[0]);
@@ -31,7 +31,7 @@ export default function PendingOrders() {
 
     const getOrders = async () => {
       const res = await fetch(
-        `http://100.25.104.108:80/api/orderFetchListPending`
+        `http://launderup-backend-env.eba-2vri5ph3.ap-south-1.elasticbeanstalk.com/api/orderFetchListPending`
       );
       const result = await res.json();
       // while (result.length === 0) {}
